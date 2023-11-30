@@ -372,13 +372,13 @@ def Protanopia():
         pro_window.destroy()  # Close the dwu_window
         root.deiconify()  # Show the main window
     # buttons
-    rock = Button(pro_window, width=20, height=2, text="ROCK",  bg="#AEDBF0", fg="Mediumvioletred", activebackground="#AEDBF0", command=lambda: updateChoice("rock"))
+    rock = Button(pro_window, width=20, height=2, text="ROCK",  bg="#788BCF", fg="Navy", activebackground="#788BCF", command=lambda: updateChoice("rock"))
     rock.grid(row=2, column=1)
-    paper = Button(pro_window, width=20, height=2, text="PAPER", bg="#12A5C6", fg="Mediumvioletred", activebackground="#12A5C6", command=lambda: updateChoice("paper"))
+    paper = Button(pro_window, width=20, height=2, text="PAPER", bg="#0134B1", fg="Navy", activebackground="#0134B1", command=lambda: updateChoice("paper"))
     paper.grid(row=2, column=2)
-    scissor = Button(pro_window, width=20, height=2, text="SCISSOR",bg="#B55F7A", fg="Mediumvioletred", activebackground="#B55F7A", command=lambda: updateChoice("scissor"))
+    scissor = Button(pro_window, width=20, height=2, text="SCISSOR",bg="#D5A603", fg="Navy", activebackground="#D5A603", command=lambda: updateChoice("scissor"))
     scissor.grid(row=2, column=3)
-    return_button = Button(pro_window, width=20, height=2, text="RETURN", bg="#FFE2E7", fg="Mediumvioletred",activebackground="#FFE2E7", command=replay_game)
+    return_button = Button(pro_window, width=20, height=2, text="RETURN", bg="#6D6417", fg="Navy",activebackground="#6D6417", command=replay_game)
     return_button.grid(row=7, column=3, pady=(50, 0))
 
     menubar = Menu(root)
@@ -409,7 +409,7 @@ def Tritanopia():
     scissor_img = ImageTk.PhotoImage(Image.open("scissors for trit.png"))
     rock_img_comp = ImageTk.PhotoImage(Image.open("rock for trit2.png"))
     paper_img_comp = ImageTk.PhotoImage(Image.open("paper for trit.png"))
-    scissor_img_comp = ImageTk.PhotoImage(Image.open("scissors for trit2.png"))
+    scissor_img_comp = ImageTk.PhotoImage(Image.open("scissors for trit 2.png"))
 
     # insert picture
     user_label = Label(tri_window, image=scissor_img, bg="#FFE2E7")
