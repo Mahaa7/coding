@@ -3,8 +3,6 @@ from random import randint
 from PIL import Image, ImageTk
 from tkinter import messagebox
 
-
-
 def Deuteranopia():
     root.withdraw()
     dwu_window = Toplevel(root)
@@ -18,7 +16,6 @@ def Deuteranopia():
     situation2_entry = Entry(dwu_window, font=50)
     situation2_entry.grid(row=4, column=3, padx=20, pady=(20, 0))
 
-    # picture
     rock_img = ImageTk.PhotoImage(Image.open("rock for deut.png"))
     paper_img = ImageTk.PhotoImage(Image.open("paper for deu2.png"))
     scissor_img = ImageTk.PhotoImage(Image.open("scissors for deut.png"))
@@ -26,29 +23,24 @@ def Deuteranopia():
     paper_img_comp = ImageTk.PhotoImage(Image.open("paper for deut.png"))
     scissor_img_comp = ImageTk.PhotoImage(Image.open("scissors for deu22.png"))
 
-    # insert picture
     user_label = Label(dwu_window, image=scissor_img, bg="#105081")
     comp_label = Label(dwu_window, image=scissor_img_comp, bg="#105081")
     comp_label.grid(row=1, column=0, padx=25, pady=25)
     user_label.grid(row=1, column=4, padx=25, pady=25)
 
-    # scores
     playerScore = Label(dwu_window, text=0, font=100, bg="#105081", fg="Goldenrod")
     computerScore = Label(dwu_window, text=0, font=100, bg="#105081", fg="Goldenrod")
     computerScore.grid(row=1, column=1)
     playerScore.grid(row=1, column=3)
 
-    # indicators
     user_indicator = Label(dwu_window, font=50, text="USER", bg="#105081", fg="Goldenrod")
     comp_indicator = Label(dwu_window, font=50, text="COMPUTER", bg="#105081", fg="Goldenrod")
     user_indicator.grid(row=0, column=4)
     comp_indicator.grid(row=0, column=0)
 
-    # messages
     msg = Label(dwu_window, font=50, bg="#105081", fg="Goldenrod")
     msg.grid(row=3, column=2)
 
-    # update message
     def updateMessage(x):
         msg['text'] = x
 
@@ -76,18 +68,14 @@ def Deuteranopia():
         situation1_length = len(situation1)
         if situation1_length == 0:
             messagebox.showinfo("Error", "NO TEXT ENTERED!!")
-            return  # Return to prevent further execution
+            return  
 
-    # check winner
-
-    # Function to increment the play counter and check if it's the third play
     def playRound(playerChoice):
         global playCounter
         playCounter += 1
         if playCounter == 3:
             checkWin(playerChoice, computerScore)
 
-    # check winner
     def checkWin(player, computer):
         if player == computer:
             updateMessage("It's a tie!!!")
@@ -131,11 +119,10 @@ def Deuteranopia():
         updateMessage(f"{winner}!")
         disableButtons()
 
-    # update choices
     choices = ["rock", "paper", "scissor"]
 
     def updateChoice(x):
-        # for computer
+       
         compChoice = choices[randint(0, 2)]
         if compChoice == "rock":
             comp_label.configure(image=rock_img_comp)
@@ -144,7 +131,6 @@ def Deuteranopia():
         else:
             comp_label.configure(image=scissor_img_comp)
 
-        # for user
         if x == "rock":
             user_label.configure(image=rock_img)
         elif x == "paper":
@@ -154,37 +140,29 @@ def Deuteranopia():
 
         checkWin(x, compChoice)
 
-        # disable buttons
-
     def disableButtons():
         rock.config(state=DISABLED)
         paper.config(state=DISABLED)
         scissor.config(state=DISABLED)
 
-    # Function to reset the game
     def replay_game():
-        # Reset scores to 0
         playerScore["text"] = "0"
         computerScore["text"] = "0"
 
-        # Reset choice labels to default image
         user_label.configure(image=scissor_img)
         comp_label.configure(image=scissor_img_comp)
 
-        # Enable buttons
         rock.config(state=NORMAL)
         paper.config(state=NORMAL)
         scissor.config(state=NORMAL)
 
-        # Clear message label
         updateMessage("")
 
-    # Function to return to the main window
     def return_to_main():
-        dwu_window.destroy()  # Close the dwu_window
-        root.deiconify()  # Show the main window
+        dwu_window.destroy()  
+        root.deiconify()  
 
-    # buttons
+    
     rock = Button(dwu_window, width=20, height=2, text="ROCK", bg="#6D83CE", fg="Goldenrod", activebackground="#6D83CE", command=lambda: updateChoice("rock"))
     rock.grid(row=2, column=1)
 
@@ -219,33 +197,32 @@ def Protanopia():
     situation2_entry = Entry(pro_window, font=50)
     situation2_entry.grid(row=4, column=3, padx=20, pady=(20, 0))
 
-    # picture
+    
     rock_img = ImageTk.PhotoImage(Image.open("rock for prot.png"))
     paper_img = ImageTk.PhotoImage(Image.open("Paper for Prot2.png"))
     scissor_img = ImageTk.PhotoImage(Image.open("scissors for prot.png"))
     rock_img_comp = ImageTk.PhotoImage(Image.open("rock for prot2.png"))
     paper_img_comp = ImageTk.PhotoImage(Image.open("Paper for Prot.png"))
     scissor_img_comp = ImageTk.PhotoImage(Image.open("scissors for prot2.png"))
-    # insert picture
+    
     user_label = Label(pro_window, image=scissor_img, bg="#6D6417")
     comp_label = Label(pro_window, image=scissor_img_comp, bg="#6D6417")
     comp_label.grid(row=1, column=0, padx=25, pady=25)
     user_label.grid(row=1, column=4, padx=25, pady=25)
-    # scores
+    
     playerScore = Label(pro_window, text=0, font=100, bg="#6D6417", fg="Navy")
     computerScore = Label(pro_window, text=0, font=100, bg="#6D6417", fg="Navy")
     computerScore.grid(row=1, column=1)
     playerScore.grid(row=1, column=3)
-    # indicators
+    
     user_indicator = Label(pro_window, font=50, text="USER", bg="#6D6417", fg="Navy")
     comp_indicator = Label(pro_window, font=50, text="COMPUTER",bg="#6D6417", fg="Navy")
     user_indicator.grid(row=0, column=4)
     comp_indicator.grid(row=0, column=0)
-    # messages
+    
     msg = Label(pro_window, font=50, bg="#6D6417", fg="BLACK")
     msg.grid(row=3, column=2)
 
-    # update message
     def updateMessage(x):
         msg['text'] = x
 
@@ -275,7 +252,6 @@ def Protanopia():
             messagebox.showinfo("Error", "NO TEXT ENTERED!!")
             return  # Return to prevent further execution
 
-    # Function to increment the play counter and check if it's the third play
 
 
     def playRound(playerChoice):
@@ -283,7 +259,7 @@ def Protanopia():
         playCounter += 1
         if playCounter == 3:
             checkWin(playerChoice, computerScore)
-    # check winner
+    
     def checkWin(player, computer):
         if player == computer:
             updateMessage("It's a tie!!!")
@@ -327,7 +303,7 @@ def Protanopia():
         updateMessage(f"{winner}!")
         disableButtons()
 
-    # update choices
+    
     choices = ["rock", "paper", "scissor"]
     def updateChoice(x):
         # for computer
@@ -338,7 +314,7 @@ def Protanopia():
             comp_label.configure(image=paper_img_comp)
         else:
             comp_label.configure(image=scissor_img_comp)
-        # for user
+        
         if x == "rock":
             user_label.configure(image=rock_img)
         elif x == "paper":
@@ -347,31 +323,27 @@ def Protanopia():
             user_label.configure(image=scissor_img)
         checkWin(x, compChoice)
 
-    # disable buttons
+    
     def disableButtons():
         rock.config(state=DISABLED)
         paper.config(state=DISABLED)
         scissor.config(state=DISABLED)
 
-    # Function to reset the game
+    
     def replay_game():
-        # Reset scores to 0
+       
         playerScore["text"] = "0"
         computerScore["text"] = "0"
-        # Reset choice labels to default image
         user_label.configure(image=scissor_img)
         comp_label.configure(image=scissor_img_comp)
-        # Enable buttons
         rock.config(state=NORMAL)
         paper.config(state=NORMAL)
         scissor.config(state=NORMAL)
-        # Clear message label
+        
         updateMessage("")
-        # Function to return to the main window
     def return_to_main():
-        pro_window.destroy()  # Close the dwu_window
-        root.deiconify()  # Show the main window
-    # buttons
+        pro_window.destroy()  
+        root.deiconify()  
     rock = Button(pro_window, width=20, height=2, text="ROCK",  bg="#788BCF", fg="Navy", activebackground="#788BCF", command=lambda: updateChoice("rock"))
     rock.grid(row=2, column=1)
     paper = Button(pro_window, width=20, height=2, text="PAPER", bg="#0134B1", fg="Navy", activebackground="#0134B1", command=lambda: updateChoice("paper"))
@@ -403,7 +375,6 @@ def Tritanopia():
     situation2_entry = Entry(tri_window, font=50)
     situation2_entry.grid(row=4, column=3, padx=20, pady=(20, 0))
 
-    # picture
     rock_img = ImageTk.PhotoImage(Image.open("rock for trit.png"))
     paper_img = ImageTk.PhotoImage(Image.open("paper for trit2.png"))
     scissor_img = ImageTk.PhotoImage(Image.open("scissors for trit.png"))
@@ -411,30 +382,29 @@ def Tritanopia():
     paper_img_comp = ImageTk.PhotoImage(Image.open("paper for trit.png"))
     scissor_img_comp = ImageTk.PhotoImage(Image.open("scissors for trit 2.png"))
 
-    # insert picture
     user_label = Label(tri_window, image=scissor_img, bg="#FFE2E7")
     comp_label = Label(tri_window, image=scissor_img_comp, bg="#FFE2E7")
     comp_label.grid(row=1, column=0, padx=25, pady=25)
     user_label.grid(row=1, column=4, padx=25, pady=25)
 
 
-    # indicators
+    
     user_indicator = Label(tri_window, font=50, text="USER", bg="#FFE2E7", fg="Mediumvioletred")
     comp_indicator = Label(tri_window, font=50, text="COMPUTER", bg="#FFE2E7", fg="Mediumvioletred")
     user_indicator.grid(row=0, column=4)
     comp_indicator.grid(row=0, column=0)
 
-    # scores
+    
     playerScore = Label(tri_window, text=0, font=100, bg="#FFE2E7", fg="Mediumvioletred")
     computerScore = Label(tri_window, text=0, font=100, bg="#FFE2E7", fg="Mediumvioletred")
     computerScore.grid(row=1, column=1)
     playerScore.grid(row=1, column=3)
 
-    # messages
+    
     msg = Label(tri_window, font=50, bg="#FFE2E7", fg="Mediumvioletred")
     msg.grid(row=3, column=2)
 
-    # update message
+    
 
     def updateMessage(x):
         msg['text'] = x
@@ -450,7 +420,7 @@ def Tritanopia():
         situation2_length = len(situation2)
         if situation2_length == 0:
             messagebox.showinfo("Error", "NO TEXT ENTERED!!")
-            return  # Return to prevent further execution
+            return  
 
 
     def updateCompScore():
@@ -464,19 +434,19 @@ def Tritanopia():
         situation1_length = len(situation1)
         if situation1_length == 0:
             messagebox.showinfo("Error", "NO TEXT ENTERED!!")
-            return  # Return to prevent further execution
+            return 
 
 
 
 
-    # Function to increment the play counter and check if it's the third play
+    
     def playRound(playerChoice):
         global playCounter
         playCounter += 1
         if playCounter == 3:
             checkWin(playerChoice, computerScore)
 
-    # check winner
+    
     def checkWin(player, computer):
         if player == computer:
             updateMessage("It's a tie!!!")
@@ -521,14 +491,14 @@ def Tritanopia():
         updateMessage(f"{winner}!")
         disableButtons()
 
-    # update choices
+    
 
 
     choices = ["rock", "paper", "scissor"]
 
 
     def updateChoice(x):
-    # for computer
+    
         compChoice = choices[randint(0, 2)]
         if compChoice == "rock":
             comp_label.configure(image=rock_img_comp)
@@ -537,7 +507,7 @@ def Tritanopia():
         else:
             comp_label.configure(image=scissor_img_comp)
 
-        # for user
+        
         if x == "rock":
             user_label.configure(image=rock_img)
         elif x == "paper":
@@ -548,41 +518,37 @@ def Tritanopia():
         checkWin(x, compChoice)
 
 
-# disable buttons
+
     def disableButtons():
         rock.config(state=DISABLED)
         paper.config(state=DISABLED)
         scissor.config(state=DISABLED)
 
-    # Function to reset the game
 
 
     def replay_game():
-        # Reset scores to 0
+        
         playerScore["text"] = "0"
         computerScore["text"] = "0"
 
-        # Reset choice labels to default image
+        
         user_label.configure(image=scissor_img)
         comp_label.configure(image=scissor_img_comp)
 
-        # Enable buttons
         rock.config(state=NORMAL)
         paper.config(state=NORMAL)
         scissor.config(state=NORMAL)
 
-        # Clear message label
+        
         updateMessage("")
-
-        # Function to return to the main window
 
 
     def return_to_main():
-        tri_window.destroy()  # Close the dwu_window
-        root.deiconify()  # Show the main window
+        tri_window.destroy()  
+        root.deiconify() 
 
 
-    # buttons
+
     rock = Button(tri_window, width=20, height=2, text="ROCK", bg="#AEDBF0", fg="Mediumvioletred",activebackground="#AEDBF0", command=lambda: updateChoice("rock"))
     rock.grid(row=2, column=1)
 
@@ -617,7 +583,7 @@ def Achromatopsia():
     situation2_entry = Entry(ach_window, font=50)
     situation2_entry.grid(row=4, column=3, padx=20, pady=(20, 0))
 
-    # picture
+    
     rock_img = ImageTk.PhotoImage(Image.open("rock for ach.png"))
     paper_img = ImageTk.PhotoImage(Image.open("paper for ach2.png"))
     scissor_img = ImageTk.PhotoImage(Image.open("scissors for ach.png"))
@@ -625,29 +591,29 @@ def Achromatopsia():
     paper_img_comp = ImageTk.PhotoImage(Image.open("paper for ach.png"))
     scissor_img_comp = ImageTk.PhotoImage(Image.open("scissors for ach2.png"))
 
-    # insert picture
+    
     user_label = Label(ach_window, image=scissor_img, bg="#D5D5D5")
     comp_label = Label(ach_window, image=scissor_img_comp, bg="#D5D5D5")
     comp_label.grid(row=1, column=0, padx=25, pady=25)
     user_label.grid(row=1, column=4, padx=25, pady=25)
 
-    # scores
+   
     playerScore = Label(ach_window, text=0, font=100, bg="#D5D5D5", fg="Black")
     computerScore = Label(ach_window, text=0, font=100, bg="#D5D5D5", fg="Black")
     computerScore.grid(row=1, column=1)
     playerScore.grid(row=1, column=3)
 
-    # indicators
+    
     user_indicator = Label(ach_window, font=50, text="USER", bg="#D5D5D5", fg="Black")
     comp_indicator = Label(ach_window, font=50, text="COMPUTER", bg="#D5D5D5", fg="Black")
     user_indicator.grid(row=0, column=4)
     comp_indicator.grid(row=0, column=0)
 
-    # messages
+    
     msg = Label(ach_window, font=50, bg="#D5D5D5", fg="Black")
     msg.grid(row=3, column=2)
 
-    # update message
+    
     def updateMessage(x):
         msg['text'] = x
 
@@ -662,7 +628,7 @@ def Achromatopsia():
         situation2_length = len(situation2)
         if situation2_length == 0:
             messagebox.showinfo("Error", "NO TEXT ENTERED!!")
-            return  # Return to prevent further execution
+            return  
 
     def updateCompScore():
         situation1 = situation1_entry.get()
@@ -675,18 +641,18 @@ def Achromatopsia():
         situation1_length = len(situation1)
         if situation1_length == 0:
             messagebox.showinfo("Error", "NO TEXT ENTERED!!")
-            return  # Return to prevent further execution
+            return  
 
-    # check winner
+    
 
-    # Function to increment the play counter and check if it's the third play
+    
     def playRound(playerChoice):
         global playCounter
         playCounter += 1
         if playCounter == 3:
             checkWin(playerChoice, computerScore)
 
-    # check winner
+   
     def checkWin(player, computer):
         if player == computer:
             updateMessage("It's a tie!!!")
@@ -730,11 +696,11 @@ def Achromatopsia():
         updateMessage(f"{winner}!")
         disableButtons()
 
-    # update choices
+   
     choices = ["rock", "paper", "scissor"]
 
     def updateChoice(x):
-        # for computer
+        
         compChoice = choices[randint(0, 2)]
         if compChoice == "rock":
             comp_label.configure(image=rock_img_comp)
@@ -743,7 +709,7 @@ def Achromatopsia():
         else:
             comp_label.configure(image=scissor_img_comp)
 
-        # for user
+        
         if x == "rock":
             user_label.configure(image=rock_img)
         elif x == "paper":
@@ -753,37 +719,36 @@ def Achromatopsia():
 
         checkWin(x, compChoice)
 
-        # disable buttons
+        
 
     def disableButtons():
         rock.config(state=DISABLED)
         paper.config(state=DISABLED)
         scissor.config(state=DISABLED)
 
-    # Function to reset the game
+    
     def replay_game():
-        # Reset scores to 0
+        
         playerScore["text"] = "0"
         computerScore["text"] = "0"
 
-        # Reset choice labels to default image
+        
         user_label.configure(image=scissor_img)
         comp_label.configure(image=scissor_img_comp)
 
-        # Enable buttons
+        
         rock.config(state=NORMAL)
         paper.config(state=NORMAL)
         scissor.config(state=NORMAL)
 
-        # Clear message label
+       
         updateMessage("")
 
-    # Function to return to the main window
+    
     def return_to_main():
-        ach_window.destroy()  # Close the ach_window
-        root.deiconify()  # Show the main window
+        ach_window.destroy()  
+        root.deiconify()  
 
-    # buttons
     rock = Button(ach_window, width=20, height=2, text="ROCK", bg="#D5D5D5", fg="Black", activebackground="#D5D5D5",
                   command=lambda: updateChoice("rock"))
     rock.grid(row=2, column=1)
@@ -815,11 +780,9 @@ root.state('zoomed')
 root.title("Main Window")
 root.configure(background='#AADFE5')
 
-# Title label
 a = Label(root, text='Rock Paper Scissors', background='#AADFE5', foreground='white', font=('Courier','50'))
 a.pack()
 
-# Image label
 image = PhotoImage(file="A.png")
 img = Label(root, image=image, width=595, height=288)
 img.pack()
